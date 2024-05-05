@@ -3,14 +3,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:widgets/di/get_it.dart';
 
 // import 'package:widget_compose/mocks/products.dart';
 
 import 'package:widgets/entities/product.dart';
 import 'package:widgets/mock/product.dart';
-import 'package:widgets/network/http/dio_service.dart';
-import 'package:widgets/repositories/product_repository.dart';
-import 'package:widgets/services/product_service.dart';
+
 import 'package:widgets/widgets/compounds/jumbotron/home_jumbotron.dart';
 import 'package:widgets/widgets/compounds/navbar/home_nav.dart';
 import 'package:widgets/widgets/compounds/sections/catalog.dart';
@@ -26,16 +25,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final IProductService service;
+  late final IProductService service = getIt.get<IProductService>();
 
   List<List<ProductToDisplay>> products = [];
   List<String> categories = [];
 
   _HomePageState() {
-    final http = DioService('https://fakestoreapi.com');
-    final repo = ProductRepository(http);
-    service = ProductService(repo);
-
     getProducts();
   }
 

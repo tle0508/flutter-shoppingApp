@@ -7,15 +7,26 @@
 
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:widgets/mock/mock_http_service.dart';
+import 'package:get_it/get_it.dart';
 
+
+import 'package:widgets/mock/mock_http_service.dart';
+import 'package:widgets/network/http/http_service.dart';
+import 'package:widgets/port/product.dart';
 import 'package:widgets/repositories/product_repository.dart';
 import 'package:widgets/services/product_service.dart';
 
 void main() {
+  final getIt = GetIt.instance;
+
+  getIt.registerSingleton<HttpService>(MockHttpService('mock'));
+  getIt.registerSingleton<IProductRepository>(ProductRepository());
+  getIt.registerSingleton<IProductService>(ProductService());
+
   test('Get product by electronics category returns electronics products',() async {
-    final mockHttpService = MockHttpService('mock');
-    mockHttpService.returnData = [{
+
+    final mockHttpService = getIt.get<HttpService>();
+    (mockHttpService as MockHttpService).returnData = [{
       "id": 9,
       "title": "WD 2TB Elements Portable External Hard Drive - USB 3.0 ",
       "price": 64,
@@ -28,12 +39,26 @@ void main() {
       }
     }];
 
-    final productRepository = ProductRepository(mockHttpService);
-    final productService = ProductService(productRepository);
+    final productService = getIt.get<IProductService>();
     final products = await productService.getByCategory('electronics');
 
     expect(products, isNotEmpty);
     expect(products[0].category, 'electronics');
   });
-  
+
+  test('Get all categories gets categories', () async {
+    final mockHttpService = getIt.get<HttpService>();
+    (mockHttpService as MockHttpService).returnData = [
+      "hello",
+      "jewelery",
+      "men's clothing",
+      "women's clothing"
+    ];
+    final productService = getIt.get<IProductService>();
+    final categories = await productService.getCategories();
+
+    expect(categories, isNotEmpty);
+    expect(categories[0], 'hello');
+
+  });
 }

@@ -1,10 +1,10 @@
 
+import 'package:widgets/di/get_it.dart';
 import 'package:widgets/entities/product.dart';
 import 'package:widgets/port/product.dart';
 
 class ProductService extends IProductService {
-  final IProductRepository repository;
-  ProductService(this.repository);
+  final IProductRepository repository = getIt.get<IProductRepository>();
 
   @override
   Future<List<ProductToDisplay>> getByCategory(String category) async {
@@ -16,4 +16,5 @@ class ProductService extends IProductService {
   Future<List<String>> getCategories() async {
     return await repository.getCategories();
   }
+
 }

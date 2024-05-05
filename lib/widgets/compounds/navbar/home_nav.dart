@@ -10,7 +10,7 @@ class HomeNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      color:Color.fromARGB(255, 0, 0, 0),
+      color:Color.fromARGB(229, 255, 255, 255),
       child: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Row(
@@ -22,7 +22,7 @@ class HomeNavbar extends StatelessWidget {
                 onPressed: null,
                 icon: Icon(
                   Icons.info_outline_rounded,
-                  color: Color.fromARGB(255, 0, 0, 0),
+                  color: Color.fromARGB(255, 154, 0, 0),
                   size: 40,
                 )
             ),

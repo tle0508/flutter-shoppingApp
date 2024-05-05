@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/di/get_it.dart';
 
 import 'package:widgets/screens/home_screen.dart';
 
 void main() {
+  registerServices();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
