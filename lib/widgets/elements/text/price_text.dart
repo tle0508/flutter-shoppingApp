@@ -12,8 +12,8 @@ class PriceText extends StatelessWidget {
     return Text(
       price,
       style: TextStyle(
-        color: color ?? Colors.white,
-        fontSize: 16,
+        color: color ?? Color.fromARGB(255, 11, 96, 0),
+        fontSize: 26,
         fontWeight: FontWeight.w800,
         fontFamily: 'SedanSC'
       ),

@@ -12,10 +12,10 @@ class TextTitle extends StatelessWidget{
     return Text(
       title,
       style:  TextStyle(
-        color: color ?? Color.fromARGB(255, 0, 0, 0),
+        color: color ?? Color.fromARGB(255, 13, 0, 154),
         fontSize: 24,
         fontWeight: FontWeight.w600,
-        fontFamily: 'Jacquard24'
+        fontFamily: 'SedanSC'
       ),
       
     );

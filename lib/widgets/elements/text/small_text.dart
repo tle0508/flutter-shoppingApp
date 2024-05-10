@@ -17,7 +17,7 @@ class SmallText extends StatelessWidget {
         style: TextStyle(
 
             fontFamily: 'SedanSC',
-            color: color ?? Color.fromARGB(255, 0, 0, 0)
+            color: color ?? Color.fromARGB(255, 13, 0, 154)
         ),
       ),
     );

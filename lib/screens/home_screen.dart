@@ -1,16 +1,19 @@
 
 
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:widgets/di/get_it.dart';
 
-// import 'package:widget_compose/mocks/products.dart';
-
-import 'package:widgets/entities/product.dart';
+import 'package:widgets/entities/product_dto.dart';
 import 'package:widgets/mock/product.dart';
 
 import 'package:widgets/widgets/compounds/jumbotron/home_jumbotron.dart';
+import 'package:widgets/widgets/compounds/loading/loading_indication.dart';
 import 'package:widgets/widgets/compounds/navbar/home_nav.dart';
 import 'package:widgets/widgets/compounds/sections/catalog.dart';
 
@@ -30,19 +33,39 @@ class _HomePageState extends State<HomePage> {
   List<List<ProductToDisplay>> products = [];
   List<String> categories = [];
 
-  _HomePageState() {
+  bool isLoading = false;
+
+
+  @override
+  void initState() {
     getProducts();
+    super.initState();
   }
 
   void getProducts() async {
+
+    setState(() {
+      isLoading = true;
+    });
+    // Get category ทั้งหมด
     final categories = await service.getCategories();
+    // Loop สร้าง Future list ในการเรียกดู product by category เอาไว้
     final productsFetchers = categories.map((e) => service.getByCategory(e));
+    // เอา Future list ทั้งหมดมารอ reponse พร้อมๆกัน
+    // ข้อดี: ทุกเส้นถูกเรียกพร้อมกัน ใช้เวลาเท่าเส้นที่เรียกนานที่สุด
+    // ข้อเสีย: Server รับ load มากขึ้น เพราะถูกเรียกพร้อมกันทีเดียวหลายเส้น ต้องมีการวางแผน scaling ที่ดี
     final products = await Future.wait(productsFetchers);
 
     setState(() {
       this.categories = categories;
       this.products = products;
+      isLoading = false;
     });
+  }
+
+  void onSelectProduct(ProductToDisplay product) {
+    context.go('/detail',extra: product);
+  
   }
 
   @override
@@ -54,23 +77,24 @@ class _HomePageState extends State<HomePage> {
             children: [
               const HomeNavbar(),
               Expanded(
-                child: ListView.builder(
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        HomeJumbotron(
-                            imageUrl: categoryImages[categories[index]]!,
-                            title: categories[index].toUpperCase(),
-                            buttonTitle: 'ViewCollection'
-                        ),
-                        Catalog(title: 'All products',products: products[index]),
-                        const SizedBox(height: 24,)
-                      ],
-                    );
-                  },
-                )
-              ),
+                  child: isLoading
+                      ? const Loading()
+                      : ListView.builder(
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        key: UniqueKey(),
+                        children: [
+                          HomeJumbotron(
+                              imageUrl: categoryImages[categories[index]]!,
+                              title: categories[index].toUpperCase(),
+                              buttonTitle: 'View Collection'
+                          ),
+                          Catalog(title: 'All products',products: products[index], onSelectProduct: onSelectProduct,),
+                          const SizedBox(height: 24,)
+                        ],
+                      );},)
+              )
             ],
           ),
         ),

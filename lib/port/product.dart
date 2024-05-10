@@ -1,5 +1,5 @@
 
-import 'package:widgets/entities/product.dart';
+import 'package:widgets/entities/product_dto.dart';
 import 'package:widgets/models/product.dart';
 
 abstract class IProductRepository {

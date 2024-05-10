@@ -12,10 +12,10 @@ class BigText extends StatelessWidget{
     return Text(
       title,
       style:  TextStyle(
-        color: color ?? Color.fromARGB(255, 255, 255, 255),
+        color: color ?? Color.fromARGB(255, 13, 0, 154),
         fontSize: 34,
         fontWeight: FontWeight.w800,
-        fontFamily: 'Jacquard24'
+        fontFamily: 'SedanSC'
       ),
       
     );

@@ -14,7 +14,7 @@ class SearchInput extends StatelessWidget{
           heightFactor: 1.0,
           child: Icon(
             Icons.search,
-            color: Color.fromRGBO(142, 0, 0, 1),
+            color:Color.fromARGB(255, 13, 0, 154),
             ),
         )
       ),

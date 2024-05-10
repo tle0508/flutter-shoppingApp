@@ -1,5 +1,5 @@
 
-import 'package:widgets/entities/product.dart';
+import 'package:widgets/entities/product_dto.dart';
 
 final List<ProductToDisplay> products =[
   ProductToDisplay(id: 'prod-01', category: 'xxx', imageUrl: 'https://images.unsplash.com/photo-1625698311031-f0dd15be5144?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', name: 'T-shirt', price: 248000),
@@ -13,8 +13,8 @@ final List<ProductToDisplay> diorproducts =[
   ProductToDisplay(id: 'prod-06', category: 'xxx', imageUrl: 'https://images.unsplash.com/photo-1592842312573-dca0b185d2e0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRpb3J8ZW58MHx8MHx8fDA%3D', name: 'น้ำหอม', price: 44440),
 ];
 final Map<String,String> categoryImages = {
-  "electronics": 'https://images.unsplash.com/photo-1544006658-89bde88e87c6?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  "jewelery":'https://plus.unsplash.com/premium_photo-1661645473770-90d750452fa0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  "men's clothing":'https://images.unsplash.com/photo-1507680434567-5739c80be1ac?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  "women's clothing": 'https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=2448&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  "electronics": 'https://images.unsplash.com/photo-1714165237014-a4e59036cb98?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  "jewelery":'https://plus.unsplash.com/premium_photo-1675643444417-a8ed81a4a3d8?q=80&w=2619&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  "men's clothing":'https://images.unsplash.com/photo-1713813091747-123e452bd2cf?q=80&w=2688&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  "women's clothing": 'https://images.unsplash.com/photo-1713813091339-6f0581cc0db6?q=80&w=2649&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 };
