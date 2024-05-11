@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-       bottomNavigationBar: AppBottomNavigationBar( // ใช้ CustomBottomNavigationBar ที่สร้างขึ้น
+       bottomNavigationBar: AppBottomNavigationBar( 
         currentIndex: 0, // ตั้งค่า index ให้เป็น 0 สำหรับหน้า Home
         
       ),

@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
       body: Center(
         child: Text('Profile Page'),
       ),
-      bottomNavigationBar: AppBottomNavigationBar( // ใช้ CustomBottomNavigationBar ที่สร้างขึ้น
+      bottomNavigationBar: AppBottomNavigationBar( 
         currentIndex: 1, // ตั้งค่า index ให้เป็น 1 สำหรับหน้า Profile
       
       ),
