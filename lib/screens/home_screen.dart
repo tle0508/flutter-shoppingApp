@@ -1,6 +1,6 @@
 
 
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ import 'package:widgets/mock/product.dart';
 
 import 'package:widgets/widgets/compounds/jumbotron/home_jumbotron.dart';
 import 'package:widgets/widgets/compounds/loading/loading_indication.dart';
+import 'package:widgets/widgets/compounds/navbar/AppBottomNavigationBar.dart';
 import 'package:widgets/widgets/compounds/navbar/home_nav.dart';
 import 'package:widgets/widgets/compounds/sections/catalog.dart';
 
@@ -98,6 +99,11 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+       bottomNavigationBar: AppBottomNavigationBar( // ใช้ CustomBottomNavigationBar ที่สร้างขึ้น
+        currentIndex: 0, // ตั้งค่า index ให้เป็น 0 สำหรับหน้า Home
+        
+      ),
     );
+    
   }
 }

@@ -1,6 +1,7 @@
 
 import 'package:go_router/go_router.dart';
 import 'package:widgets/entities/product_dto.dart';
+import 'package:widgets/screens/profile_page.dart';
 
 import 'package:widgets/screens/home_screen.dart';
 import 'package:widgets/screens/product_detail_screen.dart';
@@ -16,9 +17,15 @@ final router = GoRouter(routes: [
         path: 'detail',
         builder: (context, state) {
           final product = state.extra as ProductToDisplay;
-          return  ProductDeatilScreen(product: product,);
+          return ProductDeatilScreen(product: product);
         },
-        )
-    ]
-    ),
+      ),
+      GoRoute(
+        path: 'profile',
+        builder: (context, state) {
+          return ProfilePage();
+        },
+      ),
+    ],
+  ),
 ]);
